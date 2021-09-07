@@ -39,14 +39,15 @@ class UserDataFields extends StatelessWidget {
           controller: _nameController,
           hintText: 'Name',
           labelText: 'Ihr Name',
-          suffixIcon: Icon(Icons.person),
+          suffixIcon: const Icon(Icons.person),
         ),
         UserDetailsInputWidget(
             controller: _emailController,
             hintText: 'email@example.com',
             labelText: 'Your email',
             inputType: TextInputType.emailAddress,
-            validator: (value) => !isEmail(value!) ? 'Invalid Email' : null),
+            validator: (dynamic value) =>
+                !isEmail(value! as String) ? 'Invalid Email' : null),
         UserDetailsInputWidget(
             controller: _phoneController,
             hintText: 'Telefonnummer',

@@ -16,7 +16,7 @@ class IconButtonLanguage extends StatelessWidget {
       child: IconButton(
           iconSize: 20.0,
           onPressed: () {
-            Navigator.pushNamed(context, 'client_form_screen');
+            Navigator.pushNamed(context, 'client_counter_screen');
           },
           icon: Image.asset(imagepath)),
     );
