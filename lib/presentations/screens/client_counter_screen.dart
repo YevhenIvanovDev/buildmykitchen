@@ -22,15 +22,17 @@ class _ClientCounterScreenState extends State<ClientCounterScreen> {
           'BuildMyKitchen',
           style: Theme.of(context).textTheme.headline1,
         ),
-        leading: BackAppBarButton(),
+        leading: const BackAppBarButton(),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Information(introText),
-            UserCalculation(),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              Information(introText),
+              UserCalculation(),
+            ],
+          ),
         ),
       ),
     );

@@ -27,7 +27,7 @@ class LanguageScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                child: Text(
+                child: const Text(
                   'Choose your language',
                   style: TextStyle(fontSize: 24),
                 ),
@@ -36,9 +36,10 @@ class LanguageScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButtonLanguage(imagepath: 'assets/images/grmnflg.png'),
-                    SizedBox(width: 20),
-                    IconButtonLanguage(
+                    const IconButtonLanguage(
+                        imagepath: 'assets/images/grmnflg.png'),
+                    const SizedBox(width: 20),
+                    const IconButtonLanguage(
                       imagepath: 'assets/images/uk.png',
                     )
                   ],
@@ -46,34 +47,6 @@ class LanguageScreen extends StatelessWidget {
               ),
             ],
           ),
-        )
-
-        // Container(
-        //   decoration: BoxDecoration(),
-        //   child: Column(
-        //     mainAxisAlignment: MainAxisAlignment.center,
-        //     children: [
-        //       Container(
-        //         child: Text(
-        //           'Choose your language',
-        //           style: TextStyle(fontSize: 24),
-        //         ),
-        //       ),
-        //       Center(
-        //         child: Row(
-        //           mainAxisAlignment: MainAxisAlignment.center,
-        //           children: [
-        //             IconButtonLanguage(imagepath: 'assets/images/grmnflg.png'),
-        //             SizedBox(width: 20),
-        //             IconButtonLanguage(
-        //               imagepath: 'assets/images/greatb.png',
-        //             )
-        //           ],
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
-        );
+        ));
   }
 }
