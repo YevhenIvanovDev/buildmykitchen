@@ -10,23 +10,32 @@ class UserCalculation extends StatefulWidget {
 class _UserCalculationState extends State<UserCalculation> {
   final TextEditingController _kitchenSizeController = TextEditingController();
   final List<bool> isSelected = List.generate(6, (index) => false);
+  Map<String, bool> mapOfItemsChosen = {};
 
-  void addItemsToList(int index) {
+  final List<String> items = [
+    'Herd',
+    'Hängeschränke',
+    'Waschmaschine',
+    'Spülmaschine',
+    'Arbeitsplatte schneiden',
+    'Gebrauchte Küche',
+  ];
+
+  void switchItemValue(int index) {
     setState(() {
-      for (int iconIndex = 0; iconIndex < isSelected.length; iconIndex++) {
-        if (iconIndex < isSelected.length) {
-          if (iconIndex == index) {
-            isSelected[iconIndex] = !isSelected[iconIndex];
-          } else {
-            isSelected[iconIndex] = false;
-          }
-        }
-      }
+      isSelected[index] = !isSelected[index];
     });
   }
 
+  void createMapOfItems() {
+    mapOfItemsChosen.clear();
+    for (int i = 0; i < items.length; i++) {
+      mapOfItemsChosen.putIfAbsent(items[i], () => isSelected[i]);
+    }
+  }
+
   void printItemsList() {
-    print(isSelected);
+    print('hi');
   }
 
   @override
@@ -49,19 +58,19 @@ class _UserCalculationState extends State<UserCalculation> {
                     iconTitle: 'Herd',
                     id: 0,
                     imagePath: 'assets/images/Backofen.png',
-                    onPress: addItemsToList,
+                    onPress: switchItemValue,
                   ),
                   UserIconButton(
                     iconTitle: 'Hängeschränke',
                     id: 1,
                     imagePath: 'assets/images/Backofen.png',
-                    onPress: addItemsToList,
+                    onPress: switchItemValue,
                   ),
                   UserIconButton(
                     iconTitle: 'Waschmaschine',
                     id: 2,
                     imagePath: 'assets/images/Backofen.png',
-                    onPress: addItemsToList,
+                    onPress: switchItemValue,
                   )
                 ],
               ),
@@ -71,17 +80,17 @@ class _UserCalculationState extends State<UserCalculation> {
                       iconTitle: 'Spülmaschine',
                       id: 3,
                       imagePath: 'assets/images/Spule.png',
-                      onPress: addItemsToList),
+                      onPress: switchItemValue),
                   UserIconButton(
                       iconTitle: 'Arbeitsplatte',
                       id: 4,
                       imagePath: 'assets/images/Spule.png',
-                      onPress: addItemsToList),
+                      onPress: switchItemValue),
                   UserIconButton(
                       iconTitle: 'Gebraucht',
                       id: 5,
                       imagePath: 'assets/images/Spule.png',
-                      onPress: addItemsToList),
+                      onPress: switchItemValue),
                 ],
               )
             ],
@@ -108,7 +117,7 @@ class _UserCalculationState extends State<UserCalculation> {
         const SizedBox(
           height: 20,
         ),
-        KitchenCountButton(printItemsList),
+        KitchenCountButton(createMapOfItems),
       ],
     );
   }
