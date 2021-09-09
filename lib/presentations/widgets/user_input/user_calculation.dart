@@ -1,5 +1,6 @@
+import 'package:build_my_kitchen/presentations/designs/colors.dart';
 import 'package:build_my_kitchen/presentations/widgets/user_input/icon_buttons.dart';
-import 'package:build_my_kitchen/presentations/widgets/user_input/user_icon_button.dart';
+import 'package:build_my_kitchen/presentations/widgets/user_input/input_kitchen_size.dart';
 import 'package:build_my_kitchen/presentations/widgets/widget_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -12,10 +13,13 @@ class UserCalculation extends StatefulWidget {
 class _UserCalculationState extends State<UserCalculation> {
   final _formKey = GlobalKey<FormBuilderState>();
   final TextEditingController _kitchenSizeController = TextEditingController();
-  double? kitchenSize;
+  double kitchenSize = 1;
+  double sizePrice = 0;
+  int counter = 0;
+  double totalPrice = 0;
   final List<bool> isSelected = List.generate(6, (index) => false);
   Map<String, bool> mapOfItemsChosen = {};
-
+  Map<String, double> mapOfControllerValue = {};
   final List<String> items = [
     'Herd',
     'Hängeschränke',
@@ -33,15 +37,33 @@ class _UserCalculationState extends State<UserCalculation> {
 
   void createMapOfItems() {
     mapOfItemsChosen.clear();
+    mapOfControllerValue.clear();
     for (int i = 0; i < items.length; i++) {
       mapOfItemsChosen.putIfAbsent(items[i], () => isSelected[i]);
-      print(kitchenSize);
+      mapOfControllerValue.putIfAbsent('Hängeschränke', () => kitchenSize);
+      print(totalPrice);
     }
+  }
+
+  double countItems() {
+    sizePrice = 0;
+    counter = 0;
+    sizePrice = kitchenSize * 180;
+    for (int i = 0; i < isSelected.length; i++) {
+      if (isSelected[i] == true) {
+        counter = counter + 50;
+        return totalPrice = sizePrice + counter;
+      }
+      counter += 0;
+      return totalPrice = sizePrice + counter;
+    }
+    return 0;
   }
 
   @override
   void dispose() {
     isSelected.clear();
+    _kitchenSizeController.clear();
     super.dispose();
   }
 
@@ -58,30 +80,31 @@ class _UserCalculationState extends State<UserCalculation> {
           child: FormBuilder(
             key: _formKey,
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            onChanged: () {
-              kitchenSize = double.parse(_kitchenSizeController.text);
-            },
-            child: TextFormField(
-              controller: _kitchenSizeController,
-              validator: (text) {
-                if (text == null || text.isEmpty) {
-                  return 'Die Küchenlänge soll mindestens 1m sein';
-                }
-                return null;
-              },
-              decoration: const InputDecoration(
-                  hintText: 'in Meter',
-                  labelText: 'Wie lang ist Ihre Küche?',
-                  suffixIcon: Icon(Icons.linear_scale)),
-              keyboardType: TextInputType.number,
-              textAlign: TextAlign.center,
-            ),
+            child:
+                InputKitchenSize(kitchenSizeController: _kitchenSizeController),
           ),
         ),
         const SizedBox(
           height: 20,
         ),
-        KitchenCountButton(createMapOfItems),
+        ElevatedButton(
+          onPressed: () {
+            kitchenSize = double.parse(_kitchenSizeController.text);
+            createMapOfItems();
+            countItems();
+          },
+          child: Text(
+            'Berechnen',
+            style: TextStyle(
+              color: KitchenColors.corp,
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              fontStyle: FontStyle.normal,
+              letterSpacing: 1.5,
+            ),
+          ),
+          style: ElevatedButton.styleFrom(primary: KitchenColors.inkDark),
+        ),
       ],
     );
   }
