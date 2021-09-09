@@ -41,7 +41,6 @@ class _UserCalculationState extends State<UserCalculation> {
     for (int i = 0; i < items.length; i++) {
       mapOfItemsChosen.putIfAbsent(items[i], () => isSelected[i]);
       mapOfControllerValue.putIfAbsent('Hängeschränke', () => kitchenSize);
-      print(totalPrice);
     }
   }
 
@@ -49,15 +48,12 @@ class _UserCalculationState extends State<UserCalculation> {
     sizePrice = 0;
     counter = 0;
     sizePrice = kitchenSize * 180;
-    for (int i = 0; i < isSelected.length; i++) {
-      if (isSelected[i] == true) {
-        counter = counter + 50;
-        return totalPrice = sizePrice + counter;
+    isSelected.forEach((element) {
+      if (element == true) {
+        counter += 50;
       }
-      counter += 0;
-      return totalPrice = sizePrice + counter;
-    }
-    return 0;
+    });
+    return totalPrice = sizePrice + counter;
   }
 
   @override
@@ -89,9 +85,18 @@ class _UserCalculationState extends State<UserCalculation> {
         ),
         ElevatedButton(
           onPressed: () {
+            if (_formKey.currentState!.validate()) {}
             kitchenSize = double.parse(_kitchenSizeController.text);
             createMapOfItems();
             countItems();
+            showDialog<void>(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text('Das ist ein Dialog'),
+                    actions: [],
+                  );
+                });
           },
           child: Text(
             'Berechnen',
