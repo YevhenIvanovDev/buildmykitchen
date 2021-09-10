@@ -1,7 +1,6 @@
 import 'package:build_my_kitchen/presentations/designs/colors.dart';
 import 'package:build_my_kitchen/presentations/widgets/user_input/icon_buttons.dart';
 import 'package:build_my_kitchen/presentations/widgets/user_input/input_kitchen_size.dart';
-import 'package:build_my_kitchen/presentations/widgets/widget_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
@@ -93,8 +92,26 @@ class _UserCalculationState extends State<UserCalculation> {
                 context: context,
                 builder: (context) {
                   return AlertDialog(
-                    title: Text('Das ist ein Dialog'),
-                    actions: [],
+                    title: Text(
+                      'Die Küchenmontage beträgt ca. $totalPrice €',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline2!
+                          .copyWith(fontSize: 24),
+                    ),
+                    actions: [
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text('Abbrechen')),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'client_form_screen');
+                        },
+                        child: const Text('Zur Zusammenfassung'),
+                      )
+                    ],
                   );
                 });
           },
