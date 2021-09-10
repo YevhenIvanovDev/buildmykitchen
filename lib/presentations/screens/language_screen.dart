@@ -40,10 +40,9 @@ class LanguageScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const IconButtonLanguage(
-                        imagepath: 'assets/images/grmnflg.png'),
+                    IconButtonLanguage(imagepath: 'assets/images/grmnflg.png'),
                     const SizedBox(width: 20),
-                    const IconButtonLanguage(
+                    IconButtonLanguage(
                       imagepath: 'assets/images/uk.png',
                     )
                   ],

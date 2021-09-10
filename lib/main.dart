@@ -3,9 +3,12 @@ import 'package:build_my_kitchen/presentations/screens/admin_screen.dart';
 import 'package:build_my_kitchen/presentations/screens/client_counter_screen.dart';
 import 'package:build_my_kitchen/presentations/screens/client_form_screen.dart';
 import 'package:build_my_kitchen/presentations/screens/language_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(KitchenApp());
 }
 

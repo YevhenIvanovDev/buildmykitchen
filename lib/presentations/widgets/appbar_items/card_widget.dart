@@ -7,12 +7,12 @@ Container getCard() {
   return Container(
     width: 350,
     height: 300,
-    margin: EdgeInsets.all(50.0),
+    margin: const EdgeInsets.all(50.0),
     decoration: BoxDecoration(
       color: KitchenColors.inkDark,
       borderRadius: BorderRadius.circular(14.5),
       boxShadow: [
-        BoxShadow(
+        const BoxShadow(
             color: Colors.grey,
             offset: Offset(2, 3),
             blurRadius: 0.5,
@@ -40,7 +40,7 @@ Container getCard() {
             onPressed: () {
               _launchURL();
             }),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         ElevatedButton(

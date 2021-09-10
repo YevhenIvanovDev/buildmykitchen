@@ -1,8 +1,10 @@
+import 'package:build_my_kitchen/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class IconButtonLanguage extends StatelessWidget {
+  final AuthService _auth = AuthService();
   final String imagepath;
-  const IconButtonLanguage({
+  IconButtonLanguage({
     required this.imagepath,
     Key? key,
   }) : super(key: key);
@@ -15,7 +17,14 @@ class IconButtonLanguage extends StatelessWidget {
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0)),
       child: IconButton(
           iconSize: 20.0,
-          onPressed: () {
+          onPressed: () async {
+            dynamic result = await _auth.signInAnon();
+            if (result == null) {
+              print('Anon couldnt sign in');
+            } else {
+              print('Anon signed in');
+            }
+
             Navigator.pushNamed(context, 'client_counter_screen');
           },
           icon: Image.asset(imagepath)),
