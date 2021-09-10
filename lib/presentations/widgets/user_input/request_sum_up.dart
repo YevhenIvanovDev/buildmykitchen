@@ -2,14 +2,11 @@ import 'package:build_my_kitchen/presentations/widgets/user_input/user_calculati
 import 'package:flutter/material.dart';
 
 class RequestSumUp extends StatelessWidget {
-
-  
-
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
-            title: userCalculation.,
+          //title: userCalculation.,
           ),
     );
   }
