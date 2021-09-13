@@ -1,5 +1,5 @@
 import 'package:build_my_kitchen/presentations/designs/colors.dart';
-import 'package:build_my_kitchen/presentations/widgets/appbar_items/avatar.dart';
+import 'package:build_my_kitchen/presentations/widgets/appbar_items/get_avatar.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 

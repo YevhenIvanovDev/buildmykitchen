@@ -1,5 +1,5 @@
 import 'package:build_my_kitchen/presentations/designs/gradient_background.dart';
-import 'package:build_my_kitchen/presentations/widgets/appbar_items/card_widget.dart';
+import 'package:build_my_kitchen/presentations/widgets/appbar_items/get_card.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {

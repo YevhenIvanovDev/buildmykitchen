@@ -1,6 +1,6 @@
 import 'package:build_my_kitchen/business_logic/blocs/bloc/kitchen_bloc.dart';
 import 'package:build_my_kitchen/presentations/designs/colors.dart';
-import 'package:build_my_kitchen/presentations/widgets/user_input/icon_buttons.dart';
+import 'package:build_my_kitchen/presentations/widgets/user_input/user_icon_buttons.dart';
 import 'package:build_my_kitchen/presentations/widgets/user_input/input_kitchen_size.dart';
 import 'package:build_my_kitchen/presentations/widgets/user_input/price_alert_dialog.dart';
 import 'package:flutter/material.dart';

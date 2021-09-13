@@ -1,5 +1,5 @@
 import 'package:build_my_kitchen/presentations/designs/colors.dart';
-import 'package:build_my_kitchen/presentations/widgets/user_input/form_field.dart';
+import 'package:build_my_kitchen/presentations/widgets/user_input/user_details_input_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
 

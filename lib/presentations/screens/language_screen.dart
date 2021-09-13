@@ -1,8 +1,8 @@
 import 'package:build_my_kitchen/presentations/designs/colors.dart';
 import 'package:build_my_kitchen/presentations/designs/gradient_background.dart';
 import 'package:build_my_kitchen/presentations/designs/theme_data.dart';
-import 'package:build_my_kitchen/presentations/widgets/appbar_items/drawer.dart';
-import 'package:build_my_kitchen/presentations/widgets/localizations/language_widgets.dart';
+import 'package:build_my_kitchen/presentations/widgets/appbar_items/my_drawer.dart';
+import 'package:build_my_kitchen/presentations/widgets/icon_button_language.dart';
 import 'package:flutter/material.dart';
 
 class LanguageScreen extends StatelessWidget {
