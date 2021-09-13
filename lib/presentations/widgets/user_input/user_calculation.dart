@@ -1,8 +1,10 @@
+import 'package:build_my_kitchen/business_logic/blocs/bloc/kitchen_bloc.dart';
 import 'package:build_my_kitchen/presentations/designs/colors.dart';
 import 'package:build_my_kitchen/presentations/widgets/user_input/icon_buttons.dart';
 import 'package:build_my_kitchen/presentations/widgets/user_input/input_kitchen_size.dart';
 import 'package:build_my_kitchen/presentations/widgets/user_input/price_alert_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class UserCalculation extends StatefulWidget {
@@ -29,7 +31,9 @@ class _UserCalculationState extends State<UserCalculation> {
     'Gebrauchte Küche',
   ];
 
+  //ADD Bloc
   void switchItemValue(int index) {
+    BlocProvider.of<KitchenBloc>(context).add(FirstEvent());
     setState(() {
       isSelected[index] = !isSelected[index];
     });
@@ -67,9 +71,12 @@ class _UserCalculationState extends State<UserCalculation> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(4),
-          child: UserIconButtons(onPress: switchItemValue),
+        BlocProvider(
+          create: (context) => KitchenBloc(),
+          child: Padding(
+            padding: const EdgeInsets.all(4),
+            child: UserIconButtons(onPress: switchItemValue),
+          ),
         ),
         Container(
           width: 250,
