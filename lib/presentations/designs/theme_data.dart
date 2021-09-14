@@ -15,7 +15,7 @@ ThemeData themeData = ThemeData(
           color: KitchenColors.corp,
           fontSize: 24,
           fontWeight: FontWeight.bold,
-          textStyle: TextStyle(fontFamily: 'Lexend Deca')),
+          textStyle: const TextStyle(fontFamily: 'Lexend Deca')),
       // Form
       headline2: GoogleFonts.lexendDeca(
         fontSize: 12,

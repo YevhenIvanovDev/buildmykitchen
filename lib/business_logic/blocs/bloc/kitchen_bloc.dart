@@ -13,6 +13,8 @@ class KitchenBloc extends Bloc<KitchenEvent, KitchenState> {
   Stream<KitchenState> mapEventToState(
     KitchenEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+    if (event is FirstEvent) {
+      yield KitchenInitial();
+    }
   }
 }

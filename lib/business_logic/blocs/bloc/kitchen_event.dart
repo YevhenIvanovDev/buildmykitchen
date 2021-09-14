@@ -4,3 +4,5 @@ part of 'kitchen_bloc.dart';
 abstract class KitchenEvent {}
 
 class FirstEvent extends KitchenEvent {}
+
+class SecondEvent extends KitchenEvent {}

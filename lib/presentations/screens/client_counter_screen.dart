@@ -32,7 +32,10 @@ class _ClientCounterScreenState extends State<ClientCounterScreen> {
           child: Column(
             children: [
               Information(introText),
-              UserCalculation(),
+              BlocProvider(
+                create: (context) => KitchenBloc(),
+                child: UserCalculation(),
+              ),
             ],
           ),
         ),

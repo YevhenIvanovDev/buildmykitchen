@@ -33,10 +33,10 @@ class _UserCalculationState extends State<UserCalculation> {
 
   //ADD Bloc
   void switchItemValue(int index) {
-    BlocProvider.of<KitchenBloc>(context).add(FirstEvent());
     setState(() {
       isSelected[index] = !isSelected[index];
     });
+    BlocProvider.of<KitchenBloc>(context).add(FirstEvent());
   }
 
   void createMapOfItems() {
@@ -45,6 +45,7 @@ class _UserCalculationState extends State<UserCalculation> {
     for (int i = 0; i < items.length; i++) {
       mapOfItemsChosen.putIfAbsent(items[i], () => isSelected[i]);
       mapOfControllerValue.putIfAbsent('Hängeschränke', () => kitchenSize);
+      BlocProvider.of<KitchenBloc>(context).add(SecondEvent());
     }
   }
 
@@ -69,52 +70,61 @@ class _UserCalculationState extends State<UserCalculation> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        BlocProvider(
-          create: (context) => KitchenBloc(),
-          child: Padding(
-            padding: const EdgeInsets.all(4),
-            child: UserIconButtons(onPress: switchItemValue),
-          ),
-        ),
-        Container(
-          width: 250,
-          child: FormBuilder(
-            key: _formKey,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            child:
-                InputKitchenSize(kitchenSizeController: _kitchenSizeController),
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        ElevatedButton(
-          onPressed: () {
-            if (_formKey.currentState!.validate()) {}
-            kitchenSize = double.parse(_kitchenSizeController.text);
-            createMapOfItems();
-            countItems();
-            showDialog<void>(
-                context: context,
-                builder: (context) {
-                  return PriceAlertDialog(totalPrice: totalPrice);
-                });
-          },
-          child: Text(
-            'Berechnen',
-            style: TextStyle(
-              color: KitchenColors.corp,
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-              fontStyle: FontStyle.normal,
-              letterSpacing: 1.5,
-            ),
-          ),
-          style: ElevatedButton.styleFrom(primary: KitchenColors.inkDark),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => KitchenBloc(),
+      child: BlocBuilder<KitchenBloc, KitchenState>(
+        builder: (context, state) {
+          if (state is KitchenInitial) {
+            return Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(4),
+                  child: UserIconButtons(onPress: switchItemValue),
+                ),
+                Container(
+                  width: 230,
+                  child: FormBuilder(
+                    key: _formKey,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    child: InputKitchenSize(
+                        kitchenSizeController: _kitchenSizeController),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {}
+                    kitchenSize = double.parse(_kitchenSizeController.text);
+                    createMapOfItems();
+                    countItems();
+                    showDialog<void>(
+                        context: context,
+                        builder: (context) {
+                          return PriceAlertDialog(totalPrice: totalPrice);
+                        });
+                  },
+                  child: Text(
+                    'Berechnen',
+                    style: TextStyle(
+                      color: KitchenColors.corp,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.normal,
+                      letterSpacing: 1.5,
+                    ),
+                  ),
+                  style:
+                      ElevatedButton.styleFrom(primary: KitchenColors.inkDark),
+                ),
+              ],
+            );
+          } else {
+            return const CircularProgressIndicator();
+          }
+        },
+      ),
     );
   }
 }
