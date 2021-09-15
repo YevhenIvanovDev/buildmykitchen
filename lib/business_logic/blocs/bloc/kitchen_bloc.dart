@@ -16,9 +16,6 @@ class KitchenBloc extends Bloc<KitchenEvent, KitchenState> {
   ) async* {
     if (event is FirstEvent) {
       yield KitchenInitial();
-      if (event is SecondEvent) {
-        yield ListAndFormState();
-      }
     }
   }
 }

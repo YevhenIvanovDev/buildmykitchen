@@ -45,7 +45,6 @@ class _UserCalculationState extends State<UserCalculation> {
     for (int i = 0; i < items.length; i++) {
       mapOfItemsChosen.putIfAbsent(items[i], () => isSelected[i]);
       mapOfControllerValue.putIfAbsent('Hängeschränke', () => kitchenSize);
-      BlocProvider.of<KitchenBloc>(context).add(SecondEvent());
     }
   }
 
