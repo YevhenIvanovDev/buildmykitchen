@@ -17,26 +17,26 @@ class _ClientCounterScreenState extends State<ClientCounterScreen> {
       'Bitte wählen Sie die gewünschten Leistungen des Handwerkers aus.\nBerechnen Sie den Montagepreis!';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'BuildMyKitchen',
-          style: Theme.of(context).textTheme.headline1,
+    return BlocProvider(
+      create: (context) => KitchenBloc(),
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            'BuildMyKitchen',
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          leading: const BackAppBarButton(),
         ),
-        leading: const BackAppBarButton(),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              Information(introText),
-              BlocProvider(
-                create: (context) => KitchenBloc(),
-                child: UserCalculation(),
-              ),
-            ],
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Information(introText),
+                UserCalculation(),
+              ],
+            ),
           ),
         ),
       ),

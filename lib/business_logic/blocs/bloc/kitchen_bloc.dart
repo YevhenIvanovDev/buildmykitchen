@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 part 'kitchen_event.dart';
@@ -15,6 +16,9 @@ class KitchenBloc extends Bloc<KitchenEvent, KitchenState> {
   ) async* {
     if (event is FirstEvent) {
       yield KitchenInitial();
+      if (event is SecondEvent) {
+        yield ListAndFormState();
+      }
     }
   }
 }
