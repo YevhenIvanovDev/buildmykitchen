@@ -1,8 +1,8 @@
-import 'package:build_my_kitchen/services/auth.dart';
+import 'package:build_my_kitchen/services/auth_service_anon.dart';
 import 'package:flutter/material.dart';
 
 class IconButtonLanguage extends StatelessWidget {
-  final AuthService _auth = AuthService();
+  final AuthServiceAnon _auth = AuthServiceAnon();
   final String imagepath;
   IconButtonLanguage({
     required this.imagepath,

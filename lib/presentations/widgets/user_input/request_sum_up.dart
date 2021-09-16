@@ -6,19 +6,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class RequestSumUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => KitchenBloc(),
-      child: BlocBuilder<KitchenBloc, KitchenState>(
-        builder: (context, state) {
-          if (state is ListAndFormState) {
-            return ListView.builder(
-              itemBuilder: (context, index) => const ListTile(),
-            );
-          } else {
-            return const CircularProgressIndicator();
-          }
-        },
-      ),
+    // return
+    //BlocProvider(
+    //  create: (context) => KitchenBloc(),
+    //  child: BlocBuilder<KitchenBloc, KitchenState>(
+    //    builder: (context, state) {
+    //      if (state is ListAndFormState) {
+    return ListView.builder(
+      itemBuilder: (context, index) => const ListTile(),
     );
+    //   } else {
+    //     return const CircularProgressIndicator();
   }
+  //  },
+  // ),
+  // );
+  //}
 }

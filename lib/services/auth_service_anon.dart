@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-class AuthService {
+class AuthServiceAnon {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   String? userUid;

@@ -15,7 +15,8 @@ class KitchenBloc extends Bloc<KitchenEvent, KitchenState> {
     KitchenEvent event,
   ) async* {
     if (event is FirstEvent) {
-      yield KitchenInitial();
+      print('event ${event.priceOfPart}');
+      yield KitchenMain();
     }
   }
 }

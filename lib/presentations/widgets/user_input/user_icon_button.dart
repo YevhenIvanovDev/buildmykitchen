@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 class UserIconButton extends StatefulWidget {
   final String imagePath;
   final int id;
-  final String iconTitle;
+  final String iconName;
+  Color iconColor;
+  final double iconSize;
   Function onPress;
 
   UserIconButton({
+    required this.iconSize,
+    required this.iconColor,
     required this.onPress,
-    required this.iconTitle,
+    required this.iconName,
     required this.id,
     required this.imagePath,
     Key? key,
@@ -69,13 +73,13 @@ class _UserIconButtonState extends State<UserIconButton> {
     return IconButton(
         iconSize: 100,
         onPressed: () {
-          setState(() {
-            _isIconTapped = !_isIconTapped;
-            snackBarText(widget.id);
-            changeIconById(widget.id);
-            showSnackBar(context, '$snackBarValue');
-            widget.onPress(widget.id);
-          });
+          // setState(() {
+          //   _isIconTapped = !_isIconTapped;
+          //   snackBarText(widget.id);
+          //   changeIconById(widget.id);
+          //   showSnackBar(context, '$snackBarValue');
+          //   widget.onPress(widget.id);
+          // });
         },
         icon: Image.asset(
           widget.imagePath,
